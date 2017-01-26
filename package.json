@@ -1,0 +1,27 @@
+{
+  "name": "nagamoltenserver_express",
+  "version": "0.0.1",
+  "description": "servidor api de nagamolten realizado en expressjs",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cavargas40/nagamoltenserver_express.git"
+  },
+  "author": "Carlos Vargas - cavargas40@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cavargas40/nagamoltenserver_express/issues"
+  },
+  "homepage": "https://github.com/cavargas40/nagamoltenserver_express#readme"
+}
