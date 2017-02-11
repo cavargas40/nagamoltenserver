@@ -1,9 +1,9 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     app = express(),
-    user = require('./app/models/user'),
-    resp = require('./app/models/NMResponse');
-    //,Bear = require('./app/models/');
+    model = require('./app/models/db.model'),
+    resp = require('./app/models/NMResponse'),
+    user = require('./app/models/user');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -14,58 +14,39 @@ var router = express.Router();
 var NMResp = new resp.Response();
 
 router.get('/', (req, res) => {
-    res.json({ API: 'lok\'tar ogar! Bienvenido al Api de Nagamolten!' });
-    //user.createTable();
+    res.json({ API: 'lok\'tar ogar! Bienvenido al API de Nagamolten!' });
+    //model.init();    
 });
 
+//User begin
 router.route('/user')
-    .get((req,res)=>{
-        user.getUser(null, (err, usr)=>{
-            if(err)
+    .get((req, res) => {
+        var a = 0 / 0;
+        user.getUser(null, (err, usr) => {
+            if (err)
                 res.send(err);
-                
-            res.json(usr);                
+
+            res.json(usr);
         })
     })
-    
-    .post((req,res)=>{
-        var NMResp = new resp.Response();            
+    .post((req, res) => {
+        var NMResp = new resp.Response();
         user.addUser(req.body);
 
         NMResp.count = "1";
-        NMResp.message = "the user "+req.body.name+" has been created.";
+        NMResp.message = "the user " + req.body.name + " has been created.";
 
         res.json(NMResp);
     });
 
+router.route('/user/:userId')
+    .get((req,res)=>{
+        res.json({omg:"nice " + req.params.userId})
+    });
 
-// app.get('/',  (req, res) => {
-//     //res.send("hello world");
-//     res.sendFile(__dirname+'/index.html');
-//     //console.log(__dirname, __filename);
+//User end
 
-
-// });
-
-// app.post('/quotes', (req, res) => {
-//     //console.log("Helloooooooooooooooo!");
-//     console.log(req.body);
-// });
-
-app.use('/api', router);
-
+app.use('/', router);
 app.listen(3000);
 
-console.log("Nagamolten API Listen at http://localhost:3000/api");
-
-// app.get('/', function (req, res) {
-//     // res.send('hello world');    
-//     // //res.jsonp({'omg':'really'});
-//     var responseText = 'Hello World!<br>'
-//     responseText += '<small>Requested at: ' + req.requestTime + '</small>'
-//     res.send(responseText)
-// });
-
-// app.listen(3000, function () {
-//     console.log('App listening on port 3000!');
-// });
+console.log("Nagamolten API Listen at http://localhost:3000/");

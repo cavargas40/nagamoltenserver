@@ -43,3 +43,23 @@ npm install sqlite3
     })
 
     db.close()
+
+
+    /* servidor produccion "deploy"  */
+
+    npm install pm2 -g
+    pm2 start app.js
+    pm2 reset <app_name|id|'all'|json_conf>
+    pm2 stop  <app_name|id|'all'|json_conf>
+    pm2 delete  <app_name|id|'all'|json_conf>
+
+    pm2 describe <id|app_name>
+
+    pm2 list
+    pm2 monit    
+    
+    pm2 logs APP-NAME       # Display APP-NAME logs
+    pm2 logs --json         # JSON output
+    pm2 logs --format       # Formated output
+
+    https://app.keymetrics.io/#/

@@ -1,5 +1,5 @@
 var sqlite3 = require('sqlite3').verbose(),
-    db = new sqlite3.Database('data/nmdb.db'),
+    db = new sqlite3.Database('data/nm.db'),
     resp = require('./NMResponse'),
     USER = {};
 
@@ -17,8 +17,8 @@ USER.createTable = function () {
 
 //agrega un usuario
 USER.addUser = function (userData) {
-    var stmt = db.prepare("INSERT INTO users VALUES (?,?);")
-    stmt.run(null, userData.name);
+    var stmt = db.prepare("INSERT INTO users (name,rol_rolId) VALUES (?,2);")
+    stmt.run(userData.name);
     stmt.finalize();
 }
 
