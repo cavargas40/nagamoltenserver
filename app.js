@@ -14,7 +14,7 @@ var router = express.Router();
 var NMResp = new resp.Response();
 
 router.get('/', (req, res) => {
-    res.json({ API: 'lok\'tar ogar! Bienvenido al API de Nagamolten!' });
+    res.json({ API: 'lok\'tar ogar! Bienvenido al API de Nagamolten v2.0.1!' });
     //model.init();    
 });
 
@@ -25,7 +25,7 @@ router.route('/user')
         user.getUser(null, (err, usr) => {
             if (err)
                 res.send(err);
-
+            
             res.json(usr);
         })
     })
